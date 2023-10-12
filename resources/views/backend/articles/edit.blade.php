@@ -43,8 +43,11 @@
                    </div>
                     <div class="form-group">
                         <label for="" class="form-label">Content Image</label><br>
-                        <img style="width: 150px; height: 100px;" src="{{url('uploads/' . $image[0])}}" alt="">
-                        <img style="width: 150px; height: 100px;" src="{{url('uploads/' . $image[1])}}" alt="">
+                        @for($i = 0; $i < count($image); $i++)
+                            <img style="width: 150px; height: 100px;" src="{{url('uploads/' . $image[$i])}}" alt="">
+                        @endfor
+
+{{--                        <img style="width: 150px; height: 100px;" src="{{url('uploads/' . $image[1])}}" alt="">--}}
                         <br><br>
                         <input type="file" name="image[]" multiple accept="image/*" onchange="checkFileCount(this)">
                    </div>

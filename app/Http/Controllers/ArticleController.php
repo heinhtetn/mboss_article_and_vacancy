@@ -17,7 +17,7 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         if($request->ajax())
         {
             $articles = Article::query();
@@ -27,7 +27,7 @@ class ArticleController extends Controller
             ->editColumn('created_at', function($e) {
                 return Carbon::parse($e->created_at)->format("F j, Y, g:i a");
             })
-            
+
             ->addColumn('action', function($a) {
 
                 $detail = '<a href=" '.route('articles.show', $a->id).'" class="btn btn-primary" style="margin-right: 10px;">Detail</a>';
@@ -60,12 +60,15 @@ class ArticleController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+
         $article = new Article();
         $article->title = $request->title;
         $article->body = $request->body;
 
         //content image
         $imageNames = [];
+
+
         foreach($request->file('image') as $image)
         {
             $originalFileName = $image->getClientOriginalName();
@@ -74,17 +77,20 @@ class ArticleController extends Controller
             $imageNames[] = $imageName;
 
         }
+
+
+
         $article->image = implode(',', $imageNames);
 
         //featured image
         $featuredImageName = date('YmdHis') . "." . $request->featured_image->getClientOriginalExtension();
         $request->featured_image->move(public_path('featured'), $featuredImageName);
         $article->featured_image = $featuredImageName;
-        
+
         $article->save();
-        
-        return redirect('admin/articles')->with('create', 'Successfully Created');
-        
+
+        return redirect('admin/articles')->with('create', 'Article');
+
     }
 
     /**
@@ -139,7 +145,7 @@ class ArticleController extends Controller
 
         $imageNames = [];
         if($request->image)
-        {           
+        {
             foreach($request->file('image') as $image)
             {
                 $originalFileName = $image->getClientOriginalName();
@@ -153,7 +159,7 @@ class ArticleController extends Controller
 
         $article->save();
 
-        return redirect('admin/articles')->with('update', 'Updated Successfully!');
+        return redirect('admin/articles')->with('update', 'Article');
      }
 
     /**

@@ -30,21 +30,22 @@
                         <div class="col-7" style="padding: 20px 0 20px 40px">
                             <div class="d-flex justify-content-center">
                                 <img style="width: 100%; height: 540px;" src="{{url('featured/' . $article->featured_image)}}" alt="">
-                            </div>                           
+                            </div>
                         </div>
                         <div class="col-5">
                             <div class="row p-3">
                                 <div class="col mb-3">
-                                    <div class="d-flex justify-content-center">
-                                        <img style="width: 415px; height: 265px;" src="{{url('uploads/' . $image[0])}}" alt="">
-                                    </div>
-                                    
+                                    @for($i = 0; $i < count($image); $i++)
+                                        <div class="d-flex justify-content-center">
+                                            <img style="width: 415px; height: 265px;" src="{{url('uploads/' . $image[$i])}}" alt="">
+                                        </div>
+                                    @endfor
                                 </div>
-                                <div class="col">
-                                    <div class="d-flex justify-content-center">
-                                        <img style="width: 415px; height: 265px;" src="{{url('uploads/' . $image[1])}}" alt="">
-                                    </div>
-                                </div>
+{{--                                <div class="col">--}}
+{{--                                    <div class="d-flex justify-content-center">--}}
+{{--                                        <img style="width: 415px; height: 265px;" src="{{url('uploads/' . $image[1])}}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -64,10 +65,10 @@
                                 {{$article->body}}
                             </p>
                         </div>
-                        
+
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <!-- /.content -->

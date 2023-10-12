@@ -69,13 +69,13 @@
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link @yield('article')">
+                                    <a href="/admin/articles" class="nav-link @yield('article')">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Articles</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link @yield('vacancy')">
+                                    <a href="/admin/vacancies" class="nav-link @yield('vacancy')">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Vacancies</p>
                                     </a>
@@ -151,13 +151,13 @@
             @if(session('create'))
             Toast.fire({
                 icon: 'success',
-                title: 'Article created successfully!'
+                title: '{{session('create')}} created successfully!'
             })
             @endif
             @if(session('update'))
             Toast.fire({
                 icon: 'success',
-                title: 'Article updated successfully!'
+                title: "{{session('update')}} updated successfully!"
             })
             @endif
         });
