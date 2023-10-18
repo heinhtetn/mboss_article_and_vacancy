@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('article', 'nav-link active')
-
+@section('title','Article')
 @section('content')
 
     <div class="content-wrapper">
@@ -13,7 +13,7 @@
                         <h1 class="m-0">Articles Page</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <a href="{{ route('articles.create') }}" class="btn btn-success float-right">Create Article</a>
+                        <a href="{{ route('admin.articles.create') }}" class="btn btn-success float-right">Create Article</a>
                     </div>
 
                 </div><!-- /.row -->
@@ -96,6 +96,7 @@
                 title: 'Do you want to delete this article?',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
+                confirmButtonColor: '#FF0000',
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({

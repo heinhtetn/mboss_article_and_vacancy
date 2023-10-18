@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Posts</title>
+    <title>@yield('title')</title>
+    <link rel="icon" href="{{asset('assets/img/M-BOSS-Logo-crop.png')}}" type="image/gif" sizes="20x20">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -28,9 +29,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                <img src="{{ asset('dist/img/mboss.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">MBoss</span>
             </a>
 
             <!-- Sidebar -->
@@ -38,11 +39,11 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                        <img src="{{ asset('dist/img/avatar3.png') }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">AUng</a>
                     </div>
                 </div>
 
@@ -99,10 +100,14 @@
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-                Anything you want
+
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button class="btn btn-default" type="submit">Logout</button>
+                </form>
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            <strong>Copyright &copy; 2023 <a href="#" style="color: orange;">BigTech</a>.</strong> All rights
             reserved.
         </footer>
     </div>

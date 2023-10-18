@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('vacancy', 'nav-link active')
-
+@section('title','Edit-Vacancy')
 @section('content')
 
     <div class="content-wrapper">
@@ -13,7 +13,7 @@
                         <h1 class="m-0">Edit Vacancy</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <a href="{{route('vacancies.index')}}" class="btn btn-success float-right">Back</a>
+                        <a href="{{route('admin.vacancies.index')}}" class="btn btn-success float-right">Back</a>
                     </div>
 
                 </div><!-- /.row -->
@@ -24,7 +24,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="mb-4 p-3" style="max-width: 1000px; margin: auto">
-                    <form action="{{ route('vacancies.update', $vacancy->id) }}" method="POST">
+                    <form action="{{ route('admin.vacancies.update', $vacancy->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 

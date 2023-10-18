@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\Backend\ArticleController;
+use App\Http\Controllers\Backend\VacancyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,15 +15,51 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes([
+    
+]);
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
+    Route::resource('/articles', ArticleController::class);
+    Route::resource('/vacancies', VacancyController::class);
+});
+Route::redirect('/','/en');
 
+Route::prefix('/{language}')->group(function(){
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
+});
+Route::get('/about', function () {
+    return view('frontend.about');
+})->name('about');
+Route::get('/faq', function () {
+    return view('frontend.faq');
+})->name('faq');
+Route::get('/contact', function () {
+    return view('frontend.contact');
+})->name('contact');
+Route::get('/register',function(){
+    return view('frontend.register');
 });
 
-Auth::routes();
+Route::get('/blogs',[App\Http\Controllers\Frontend\ArticleController::class,'index'])->name('blogs');
+Route::get('/search-blogs',[App\Http\Controllers\Frontend\ArticleController::class,'search'])->name('blogs.search');
+Route::get('/blogs/{id}/detail',[App\Http\Controllers\Frontend\ArticleController::class,'detail'])->name('blogs.detail');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/admin/articles', ArticleController::class);
 
-Route::resource('/admin/vacancies', VacancyController::class);
+Route::get('/vacancies',[App\Http\Controllers\Frontend\VacancyController::class,'index'])->name('vacancies');
+Route::get('/vacancies/{id}/detail',[App\Http\Controllers\Frontend\VacancyController::class,'detail'])->name('vacancies.detail');
+Route::get('/search-vacancies',[App\Http\Controllers\Frontend\VacancyController::class,'search'])->name('vacancies.search');
+});
+
+
+
+
+
+
+
+
+
+
+
+

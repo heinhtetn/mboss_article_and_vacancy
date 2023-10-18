@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('article', 'nav-link active')
-
+@section('title','Article-detail')
 @section('content')
 
     <div class="content-wrapper">
@@ -13,7 +13,7 @@
                         <h1 class="m-0">Article Details</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <a href="{{route('articles.index')}}" class="btn btn-success float-right">Back</a>
+                        <a href="{{route('admin.articles.index')}}" class="btn btn-success float-right">Back</a>
                     </div>
 
                 </div><!-- /.row -->
@@ -29,14 +29,14 @@
                     <div class="row">
                         <div class="col-7" style="padding: 20px 0 20px 40px">
                             <div class="d-flex justify-content-center">
-                                <img style="width: 100%; height: 540px;" src="{{url('featured/' . $article->featured_image)}}" alt="">
+                                <img style="width: 100%; height: 542px;" src="{{url('featured/' . $article->featured_image)}}" alt="">
                             </div>
                         </div>
                         <div class="col-5">
                             <div class="row p-3">
                                 <div class="col mb-3">
                                     @for($i = 0; $i < count($image); $i++)
-                                        <div class="d-flex justify-content-center">
+                                        <div class="d-flex justify-content-center mb-3">
                                             <img style="width: 415px; height: 265px;" src="{{url('uploads/' . $image[$i])}}" alt="">
                                         </div>
                                     @endfor
@@ -56,7 +56,7 @@
                             <h3>{{$article->title}}</h3> by Admin,  <small class="text-sm" style="font-weight: bold;">{{ $article->created_at->diffForHumans() }}</small>
                         </div>
                         <div class="col-6 px-4 pt-2">
-                            <a href="{{ route('articles.edit', $article->id)}}" class="btn btn-success float-right">Edit Article</a>
+                            <a href="{{ route('admin.articles.edit', $article->id)}}" class="btn btn-success float-right">Edit Article</a>
                         </div>
                     </div>
                     <div class="row">

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('vacancy', 'nav-link active')
-
+@section('title','Vacancy')
 @section('content')
 
     <div class="content-wrapper">
@@ -13,7 +13,7 @@
                         <h1 class="m-0">Vacancies Page</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <a href="{{ route('vacancies.create') }}" class="btn btn-success float-right">Create Vacancy</a>
+                        <a href="{{ route('admin.vacancies.create') }}" class="btn btn-success float-right">Create Vacancy</a>
                     </div>
 
                 </div><!-- /.row -->

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('vacancy', 'nav-link active')
-
+@section('title','Vacancy-Detail')
 @section('content')
 
     <div class="content-wrapper">
@@ -13,7 +13,7 @@
                         <h1 class="m-0">Vacancy Details</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <a href="{{route('vacancies.index')}}" class="btn btn-success float-right">Back</a>
+                        <a href="{{route('admin.vacancies.index')}}" class="btn btn-success float-right">Back</a>
                     </div>
 
                 </div><!-- /.row -->
@@ -49,7 +49,7 @@
                     <div class="d-flex justify-content-between">
                         <p>Address: {{ $vacancy->address }}</p>
                         <div>
-                            <a href="{{ route('vacancies.edit', $vacancy->id) }}" class="btn btn-success">Edit</a>
+                            <a href="{{ route('admin.vacancies.edit', $vacancy->id) }}" class="btn btn-success">Edit</a>
                         </div>
                     </div>
                 </div>

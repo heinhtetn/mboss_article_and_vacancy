@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('article', 'nav-link active')
-
+@section('title','Create-Article')
 @section('content')
 
     <div class="content-wrapper">
@@ -13,7 +13,7 @@
                         <h1 class="m-0">Articles Page</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <a href="{{route('articles.index')}}" class="btn btn-success float-right">Back</a>
+                        <a href="{{route('admin.articles.index')}}" class="btn btn-success float-right">Back</a>
                     </div>
 
                 </div><!-- /.row -->
@@ -25,7 +25,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <form method="POST" action="{{route('articles.store')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('admin.articles.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-3">
                         <label class="form-label" for="title">Title</label>
